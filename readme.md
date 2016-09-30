@@ -31,9 +31,16 @@ GET /personas/
 }
 ```
 
+# [Campos Base de Datos](db.md)
+
 # Configuraciones MongoDB
 
 Eliminar automaticamente las sesiones expiradas, modelo sesiones:
 ```
 db.sesiones.createIndex( { "expira": 1 }, { expireAfterSeconds: 0 } )
+```
+
+Nuevo Index nombre de usuario unico
+```cmd
+db.usuarios.createIndex( { "usuario": 1 }, { unique: true } )
 ```
