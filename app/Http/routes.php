@@ -20,6 +20,13 @@ $app->get('/', function () use ($app) {
 # GET /auth/usuarios
 $app->get('usuarios', 'UsuarioController@index');
 
+# Genera la lista de usuarios del sistema
+# POST /auth/usuarios
+$app->post('usuarios', [
+    'middleware' => ['check_session'],
+    'uses' => 'UsuarioController@store'
+]);
+
 # Autentifica a un usuario y crea nueva session
 # POST /auth/login
 $app->post('login', 'AuthController@login');
