@@ -66,14 +66,15 @@ class AuthController extends Controller
             return response()->json(['error' => 'No Está autorizado'], 401);
         }
 
-        if(strtotime($session->expira) < strtotime('now')) {
+        /*if($session->expira->timestamp < strtotime('now')) {
+            \App\Sesion::destroy($session->id);
             return response()->json(['error' => 'Su sesión a expirado'], 401);
-        }
+        }*/
         
         $s = \App\Sesion::find($session->id);
         $s->expira = date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ));
 
-        $s->saveOrFail();
+        $s->save();
 
         return response()->json(['status'=>true]);
 
@@ -87,14 +88,13 @@ class AuthController extends Controller
                 'expira'        =>  date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ))
             ]);
             $session->token = $this->genToken();
-            $session->usuarios_id = $usuario->id;
-            $session->saveOrFail();
+
+            $usuario->sesiones()->save($session);
         } catch (Exception $e) {
             return response()->json(['error',[
                 'Hay un problema técnico al iniciar session, por favor contacte al administrador del sistema'
             ]], 500);
         }
-        $usuarios_id = $session->usuarios_id;
         $token = $session->token;
         $expira = $session->expira;
         return response()->json(compact('usuarios_id', 'token', 'expira', 'usuario'),201);

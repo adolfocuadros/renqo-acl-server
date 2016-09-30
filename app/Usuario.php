@@ -2,20 +2,25 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent\Eloquent\Model;
 
 class Usuario extends Model
 {
-    protected $table = 'usuarios';
+    protected $collection = 'usuarios';
 
     protected $fillable = ['nombre', 'usuario', 'persona_id'];
 
-    protected $hidden = ['pass'];
+    protected $hidden = ['pass', 'permisos'];
 
     public function scopeUsuario($query, $usuario)
     {
         return $query
             ->where('usuario', $usuario)
             ->first();
+    }
+    
+    public function sesiones()
+    {
+        return $this->hasMany('\App\Sesion');
     }
 }

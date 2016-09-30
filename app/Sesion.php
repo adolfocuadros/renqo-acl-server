@@ -2,21 +2,28 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent\Eloquent\Model;
 
 class Sesion extends Model
 {
-    protected $table = 'sesiones';
+    protected $collection = 'sesiones';
 
     protected $fillable = ['ip', 'expira'];
 
     protected $hidden = ['token'];
 
+    protected $dates = ['expira'];
+
     public function scopeUserToken($query, $usuario, $token)
     {
         return $query
-            ->where('usuarios_id',$usuario)
+            ->where('usuario_id',$usuario)
             ->where('token',$token)
             ->first();
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo('Usuario');
     }
 }

@@ -17,8 +17,8 @@ $app->get('/', function () use ($app) {
 
 
 # Genera la lista de usuarios del sistema
-# GET /auth/usuario
-$app->get('usuario', 'UsuarioController@index');
+# GET /auth/usuarios
+$app->get('usuarios', 'UsuarioController@index');
 
 # Autentifica a un usuario y crea nueva session
 # POST /auth/login
@@ -31,3 +31,6 @@ $app->post('logout', 'AuthController@logout');
 # Comprueba que la session es correcta
 # POST /auth/session
 $app->post('session', 'AuthController@checkSession');
+
+
+$app->get('mongo', 'ExampleController@testMongo');

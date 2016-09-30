@@ -25,6 +25,8 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
+$app->register('Moloquent\MongodbServiceProvider');
+
 $app->withEloquent();
 
 /*
@@ -81,6 +83,8 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+$app->configure('database');
 
 /*
 |--------------------------------------------------------------------------
