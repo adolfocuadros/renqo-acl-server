@@ -31,7 +31,7 @@ GET /personas/
 }
 ```
 
-# [Campos Base de Datos](db.md)
+# [Campos Base de Datos](doc/db.md)
 
 # Configuraciones MongoDB
 
