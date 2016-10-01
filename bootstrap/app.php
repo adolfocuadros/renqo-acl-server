@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 try {
@@ -86,6 +85,7 @@ $app->routeMiddleware([
 // $app->register(App\Providers\EventServiceProvider::class);
 
 $app->configure('database');
+$app->configure('client_auth');
 
 /*
 |--------------------------------------------------------------------------

@@ -14,16 +14,15 @@ class Sesion extends Model
 
     protected $dates = ['expira'];
 
-    public function scopeUserToken($query, $usuario, $token)
+    public function scopeToken($query, $token)
     {
         return $query
-            ->where('usuario_id',$usuario)
             ->where('token',$token)
             ->first();
     }
 
     public function usuario()
     {
-        return $this->belongsTo('Usuario');
+        return $this->belongsTo('\App\Usuario');
     }
 }

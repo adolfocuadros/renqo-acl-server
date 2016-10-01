@@ -1,6 +1,7 @@
 # Estructura de Base de Datos
 
 ## usuarios
+Colección donde se almacenarán todos los usuarios del sistema
 
 |Tipo       |Nombre |Descripción|
 |--------|----------|-----------------------|
@@ -11,12 +12,26 @@
 |int        | nivel |Numero que identifica al nivel|
 |array      | permisos|Lista de los permisos de este usuario|
 
+Se recomienda añadir un índice único para el campo usuario de la siguiente
+manera.
+
+Nuevo Index nombre de usuario único
+```cmd
+db.usuarios.createIndex( { "usuario": 1 }, { unique: true } )
+```
+
 ## sesiones
+Colección donde se almacenarán las sesiones y estas a su vez expirarán,
+se eliminarán automáticamente.
 
 |Tipo       |Nombre |Descripción|
 |--------   |----------|-----------------------|
-|ObjectId   | _id   |Generador por MongoDB|
+|ObjectId   | _id   |Generador por MongoDB id TOKEN|
 |string     | ip    |Dirección Ip desde la ultima conexión en esta sesión|
-|string     | token |Token de acceso al sistema|
 |string     | usuario_id|Relación con la colección "usuarios"|
 |Date       | expira|Fecha que expirará la session|
+
+Eliminar automáticamente las sesiones expiradas, modelo sesiones:
+```
+db.sesiones.createIndex( { "expira": 1 }, { expireAfterSeconds: 0 } )
+```

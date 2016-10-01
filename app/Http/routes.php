@@ -23,7 +23,7 @@ $app->get('usuarios', 'UsuarioController@index');
 # Genera la lista de usuarios del sistema
 # POST /auth/usuarios
 $app->post('usuarios', [
-    'middleware' => ['check_session'],
+    'middleware' => ['check_session:auth.usuarios.store'],
     'uses' => 'UsuarioController@store'
 ]);
 

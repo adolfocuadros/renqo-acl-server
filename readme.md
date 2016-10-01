@@ -1,8 +1,10 @@
 # Micro servicio Usuarios, Permisos y Sesiones
 
-#Fomato de entrega
+#Formatos de entrega
 
-GET /personas/
+### GET /personas/
+Entrega la lista de los usuarios del sistema siempre y cuando este tenga
+los todos los permisos 
 
 ```json
 {
@@ -31,16 +33,9 @@ GET /personas/
 }
 ```
 
-# [Campos Base de Datos](doc/db.md)
+# [Arquitectura Base de Datos](doc/db.md)
+Se podrá observar la organización de campos en la base de datos y algunas
+recomendaciones e indices que se tienen que configurar.
 
-# Configuraciones MongoDB
-
-Eliminar automaticamente las sesiones expiradas, modelo sesiones:
-```
-db.sesiones.createIndex( { "expira": 1 }, { expireAfterSeconds: 0 } )
-```
-
-Nuevo Index nombre de usuario unico
-```cmd
-db.usuarios.createIndex( { "usuario": 1 }, { unique: true } )
-```
+# [Permisos del Sistema](doc/permisos.md)
+Toda la lista de los permisos dentro del sistema

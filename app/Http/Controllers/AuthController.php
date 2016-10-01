@@ -52,29 +52,34 @@ class AuthController extends Controller
     public function checkSession(Request $request)
     {
         // Revisando que tenga las cabeceras
-        if(!isset(getallheaders()['Auth-Token']) || !isset(getallheaders()['User-Id'])) {
+        if(!isset(getallheaders()['Auth-Token'])) {
             return response()->json(['error' => 'No Está autorizado'], 401);
         }
 
         $token = getallheaders()['Auth-Token'];
-        $uid = getallheaders()['User-Id'];
 
         //Buscando la session en la DB
-        $session = \App\Sesion::userToken($uid, $token);
+        $session = \App\Sesion::find($token);
 
-        if(!$session->exists()) {
+        if(count($session) == 0) {
             return response()->json(['error' => 'No Está autorizado'], 401);
         }
 
-        /*if($session->expira->timestamp < strtotime('now')) {
+        if($session->expira->timestamp < strtotime('now')) {
             \App\Sesion::destroy($session->id);
             return response()->json(['error' => 'Su sesión a expirado'], 401);
-        }*/
-        
-        $s = \App\Sesion::find($session->id);
-        $s->expira = date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ));
+        }
 
-        $s->save();
+        $session->expira = date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ));
+
+        $session->save();
+        
+        if(!$request->has('permission')) {
+            return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
+        }
+        if(!$this->checkPermission($session, $request->get('permission'))) {
+            return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
+        }
 
         return response()->json(['status'=>true]);
 
@@ -87,7 +92,6 @@ class AuthController extends Controller
                 'ip'            =>  $request->ip(),
                 'expira'        =>  date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ))
             ]);
-            $session->token = $this->genToken();
 
             $usuario->sesiones()->save($session);
         } catch (Exception $e) {
@@ -95,13 +99,35 @@ class AuthController extends Controller
                 'Hay un problema técnico al iniciar session, por favor contacte al administrador del sistema'
             ]], 500);
         }
-        $token = $session->token;
+        $token = $session->id;
         $expira = $session->expira;
-        return response()->json(compact('usuarios_id', 'token', 'expira', 'usuario'),201);
+        return response()->json(compact('token', 'expira', 'usuario'), 201);
     }
 
     private function genToken()
     {
         return bin2hex(random_bytes(32));
+    }
+
+    private function checkPermission($session, $permission)
+    {
+        $usuario_permisos = $session->usuario->permisos;
+
+        if(!is_array($usuario_permisos) && $usuario_permisos == '*') {
+            return true;
+        }
+
+        $app_permisos = explode('.',$permission);
+        $niveles = count($app_permisos);
+
+        foreach ($usuario_permisos as $permiso) {
+            for($i = 0; $i < $niveles; $i++) {
+                if($permiso == $app_permisos[$i].'.*' || $permiso == $app_permisos[$i]) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
