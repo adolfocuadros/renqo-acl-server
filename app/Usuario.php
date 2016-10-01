@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     protected $collection = 'usuarios';
 
-    protected $fillable = ['nombre', 'usuario', 'persona_id'];
+    protected $fillable = ['nombre', 'usuario', 'nivel', 'permisos'];
 
     protected $hidden = ['pass', 'permisos'];
 

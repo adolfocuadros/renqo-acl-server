@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4417b37e44eed81cda65adf5fc1a11c6",
-    "content-hash": "dcb3e850d919b6b6f967c294eeadfd0a",
+    "hash": "0ca15b34e0ebfc48bf3552783ab2c28d",
+    "content-hash": "081abb22b792b2a08821c601a8d7e51a",
     "packages": [
         {
             "name": "adolfocuadros/client-auth",
@@ -42,6 +42,39 @@
             ],
             "description": "Contiene los middleware necesario para conectarse a un servidor de autenticación y hacer las validaciones respectivas",
             "time": "2016-09-30 22:45:22"
+        },
+        {
+            "name": "adolfocuadros/helpers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adolfocuadros/helpers.git",
+                "reference": "d8d6211f25e95ed70c1d1b985b19b3f05cbccd71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adolfocuadros/helpers/zipball/d8d6211f25e95ed70c1d1b985b19b3f05cbccd71",
+                "reference": "d8d6211f25e95ed70c1d1b985b19b3f05cbccd71",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adolfo Cuadros",
+                    "email": "ronnie.adolfo@gmail.com"
+                }
+            ],
+            "description": "Contiene diferentes helpers que pueden ser usados en su proyecto",
+            "time": "2016-10-01 18:28:07"
         },
         {
             "name": "doctrine/inflector",
@@ -3946,7 +3979,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "adolfocuadros/client-auth": 20
+        "adolfocuadros/client-auth": 20,
+        "adolfocuadros/helpers": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

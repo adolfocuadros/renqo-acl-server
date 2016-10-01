@@ -18,7 +18,10 @@ $app->get('/', function () use ($app) {
 
 # Genera la lista de usuarios del sistema
 # GET /auth/usuarios
-$app->get('usuarios', 'UsuarioController@index');
+$app->get('usuarios', [
+    'middleware' => ['check_session:auth.usuarios.index'],
+    'uses' => 'UsuarioController@index'
+]);
 
 # Genera la lista de usuarios del sistema
 # POST /auth/usuarios

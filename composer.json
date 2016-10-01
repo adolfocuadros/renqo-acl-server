@@ -10,7 +10,8 @@
         "vlucas/phpdotenv": "~2.2",
         "moloquent/moloquent": "^0.1.0",
         "guzzlehttp/guzzle": "~6.0",
-        "adolfocuadros/client-auth": "@dev"
+        "adolfocuadros/client-auth": "@dev",
+        "adolfocuadros/helpers": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -6,6 +6,8 @@ del sistema.
 |------ |-------    |-------        |-----------|
 |GET    |usuarios/  | usuarios.index| Lista de Usuarios|
 |POST   |usuarios/  | usuarios.store| Crea nuevo usuario|
-|PATCH  |usuarios/  | usuarios.update| Modifica datos de usuario|
-|GET    |usuarios/{id}| usuarios.show| Ve datos de un usuario |
+|PATCH  |usuarios/{id}| usuarios.update| Modifica datos de usuario|
+|GET    |usuarios/{id}| usuarios.show| Ve datos de un usuario (acceso general) |
 |DELETE |usuarios/{id}| usuarios.delete| Elimina Usuario |
+|GET    |usuarios/{id}| usuarios.own.show| Ve datos del propio usuario |
+|PATCH  |usuarios/{id}| usuarios.own.update| Modifica datos del propio usuario|
