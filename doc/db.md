@@ -7,9 +7,10 @@ Colección donde se almacenarán todos los usuarios del sistema
 |--------|----------|-----------------------|
 |ObjectId   | _id   |Generador por MongoDB|
 |string     |nombre |Nombre del usuario del sistema|
-|string     |usuario|Nick, documento o cualquier identificador de usuario unico|
+|string     |usuario|Nick, documento o cualquier identificador de usuario único|
 |string     | pass  |contraseña cifrada|
 |int        | nivel |Numero que identifica al nivel|
+|email      | email |Correo electrónico|
 |array      | permisos|Lista de los permisos de este usuario|
 
 Se recomienda añadir un índice único para el campo usuario de la siguiente
@@ -32,6 +33,6 @@ se eliminarán automáticamente.
 |Date       | expira|Fecha que expirará la session|
 
 Eliminar automáticamente las sesiones expiradas, modelo sesiones:
-```
+```cmd
 db.sesiones.createIndex( { "expira": 1 }, { expireAfterSeconds: 0 } )
 ```

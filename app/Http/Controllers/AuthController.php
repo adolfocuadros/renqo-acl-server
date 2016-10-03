@@ -51,36 +51,39 @@ class AuthController extends Controller
 
     public function checkSession(Request $request)
     {
-        // Revisando que tenga las cabeceras
-        if(!isset(getallheaders()['Auth-Token'])) {
-            return response()->json(['error' => 'No Está autorizado'], 401);
+        try {
+            // Revisando que tenga las cabeceras
+            if (!isset(getallheaders()['Auth-Token'])) {
+                return response()->json(['error' => 'No Está autorizado'], 401);
+            }
+
+            $token = getallheaders()['Auth-Token'];
+
+            //Buscando la session en la DB
+            $session = \App\Sesion::find($token);
+
+            if (count($session) == 0) {
+                return response()->json(['error' => 'No Está autorizado'], 401);
+            }
+
+            if ($session->expira->timestamp < strtotime('now')) {
+                \App\Sesion::destroy($session->id);
+                return response()->json(['error' => 'Su sesión a expirado'], 401);
+            }
+
+            $session->expira = date('Y-m-d H:i:s', strtotime('+3 hour', strtotime('now')));
+
+            $session->save();
+
+            if (!$request->has('permission')) {
+                return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
+            }
+            if (!$this->checkPermission($session, $request->get('permission'))) {
+                return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
+            }
+        } catch(\Exception $e) {
+            return response()->json(['error'=>'Ha ocurrido un error'], 500);
         }
-
-        $token = getallheaders()['Auth-Token'];
-
-        //Buscando la session en la DB
-        $session = \App\Sesion::find($token);
-
-        if(count($session) == 0) {
-            return response()->json(['error' => 'No Está autorizado'], 401);
-        }
-
-        if($session->expira->timestamp < strtotime('now')) {
-            \App\Sesion::destroy($session->id);
-            return response()->json(['error' => 'Su sesión a expirado'], 401);
-        }
-
-        $session->expira = date('Y-m-d H:i:s', strtotime ( '+3 hour' , strtotime ('now') ));
-
-        $session->save();
-        
-        if(!$request->has('permission')) {
-            return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
-        }
-        if(!$this->checkPermission($session, $request->get('permission'))) {
-            return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
-        }
-
         return response()->json(['status'=>true]);
 
     }
