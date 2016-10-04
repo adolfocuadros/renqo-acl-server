@@ -21,6 +21,6 @@ class Usuario extends Model
     
     public function sesiones()
     {
-        return $this->hasMany('\App\Sesion');
+        return $this->hasMany(\App\Sesion::class);
     }
 }

@@ -1,7 +1,7 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "adolfocuadros/renqo-acl-server",
+    "description": "Renqo Servidor ACL",
+    "keywords": ["acl", "renqo", "lumen", "server"],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -10,8 +10,8 @@
         "vlucas/phpdotenv": "~2.2",
         "moloquent/moloquent": "^0.1.0",
         "guzzlehttp/guzzle": "~6.0",
-        "adolfocuadros/client-auth": "@dev",
-        "adolfocuadros/helpers": "dev-master"
+        "adolfocuadros/helpers": "dev-master",
+        "adolfocuadros/renqo-client-acl": "^0.6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

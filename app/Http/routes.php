@@ -15,18 +15,17 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-
 # Genera la lista de usuarios del sistema
 # GET /auth/usuarios
 $app->get('usuarios', [
-    'middleware' => ['check_session:auth.usuarios.index'],
+    'middleware' => ['acl:auth.usuarios.index'],
     'uses' => 'UsuarioController@index'
 ]);
 
 # Genera la lista de usuarios del sistema
 # POST /auth/usuarios
 $app->post('usuarios', [
-    'middleware' => ['check_session:auth.usuarios.store'],
+    'middleware' => ['acl:auth.usuarios.store'],
     'uses' => 'UsuarioController@store'
 ]);
 
@@ -40,7 +39,7 @@ $app->post('logout', 'AuthController@logout');
 
 # Comprueba que la session es correcta
 # POST /auth/session
-$app->post('session', 'AuthController@checkSession');
+$app->post('acl', 'AuthController@checkAcl');
 
 
 $app->get('mongo', 'ExampleController@testMongo');

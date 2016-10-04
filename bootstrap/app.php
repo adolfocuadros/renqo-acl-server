@@ -65,7 +65,7 @@ $app->singleton(
 // ]);
 
 $app->routeMiddleware([
-    'check_session' => Adolfocuadros\ClientAuth\Middleware\CheckSessionMiddleware::class,
+    'acl' => Adolfocuadros\RenqoClientACL\Middleware\CheckAclMiddleware::class,
 //     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 
@@ -85,7 +85,7 @@ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 $app->configure('database');
-$app->configure('client_auth');
+$app->configure('renqo_client_acl');
 
 /*
 |--------------------------------------------------------------------------

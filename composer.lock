@@ -4,45 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ca15b34e0ebfc48bf3552783ab2c28d",
-    "content-hash": "081abb22b792b2a08821c601a8d7e51a",
+    "hash": "85b5f8a3c6971e58945dc40b61b72f11",
+    "content-hash": "84746f1affee8c8fb793611baca76e61",
     "packages": [
-        {
-            "name": "adolfocuadros/client-auth",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adolfocuadros/client-auth.git",
-                "reference": "4b01a292025b5e3a5bebc8f43c22ad9d68f0d8dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adolfocuadros/client-auth/zipball/4b01a292025b5e3a5bebc8f43c22ad9d68f0d8dd",
-                "reference": "4b01a292025b5e3a5bebc8f43c22ad9d68f0d8dd",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0@dev"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "Adolfocuadros\\ClientAuth\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adolfo Cuadros",
-                    "email": "ronnie.adolfo@gmail.com"
-                }
-            ],
-            "description": "Contiene los middleware necesario para conectarse a un servidor de autenticación y hacer las validaciones respectivas",
-            "time": "2016-09-30 22:45:22"
-        },
         {
             "name": "adolfocuadros/helpers",
             "version": "dev-master",
@@ -75,6 +39,42 @@
             ],
             "description": "Contiene diferentes helpers que pueden ser usados en su proyecto",
             "time": "2016-10-01 18:28:07"
+        },
+        {
+            "name": "adolfocuadros/renqo-client-acl",
+            "version": "v0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adolfocuadros/renqo-client-acl.git",
+                "reference": "b9963d5e540eff9e4dde75b17d6f1f7076398768"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adolfocuadros/renqo-client-acl/zipball/b9963d5e540eff9e4dde75b17d6f1f7076398768",
+                "reference": "b9963d5e540eff9e4dde75b17d6f1f7076398768",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0@dev"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Adolfocuadros\\RenqoClientACL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adolfo Cuadros",
+                    "email": "ronnie.adolfo@gmail.com"
+                }
+            ],
+            "description": "Contiene las herramientas necesarias para conectarse a un servidor ACL RENQO",
+            "time": "2016-10-03 18:17:38"
         },
         {
             "name": "doctrine/inflector",
@@ -3979,7 +3979,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "adolfocuadros/client-auth": 20,
         "adolfocuadros/helpers": 20
     },
     "prefer-stable": true,

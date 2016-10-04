@@ -26,38 +26,35 @@ class AuthController extends Controller
         return $this->newSession($request, $usuario);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        if(!isset(getallheaders()['Auth-Token']) || !isset(getallheaders()['User-Id'])) {
+        if(!$request->hasHeader('Auth-Token')) {
             return response()->json(['error' => 'No Está autorizado'], 401);
         }
 
-        $token = getallheaders()['Auth-Token'];
-        $uid = getallheaders()['User-Id'];
+        $token = $request->header('Auth-Token');
 
         //Buscando la session en la DB
-        $session = \App\Sesion::userToken($uid, $token);
+        $session = \App\Sesion::find($token);
 
-        if(!$session->exists()) {
-            return response()->json(['error' => 'No existe Token'], 200);
+        if(count($session)==0) {
+            return response()->json(['error' => 'No existe Token'], 404);
         }
-
 
         \App\Sesion::destroy($session->id);
 
         return response()->json(['status'=>true]);
-
     }
 
-    public function checkSession(Request $request)
+    public function checkAcl(Request $request)
     {
         try {
             // Revisando que tenga las cabeceras
-            if (!isset(getallheaders()['Auth-Token'])) {
+            if (!$request->hasHeader('Auth-Token')) {
                 return response()->json(['error' => 'No Está autorizado'], 401);
             }
 
-            $token = getallheaders()['Auth-Token'];
+            $token = $request->header('Auth-Token');
 
             //Buscando la session en la DB
             $session = \App\Sesion::find($token);
@@ -82,7 +79,7 @@ class AuthController extends Controller
                 return response()->json(['error' => 'No tiene los permisos suficientes.'], 401);
             }
         } catch(\Exception $e) {
-            return response()->json(['error'=>'Ha ocurrido un error'], 500);
+            return response()->json(['error'=>'Ha ocurrido un error en momento de ejecución'], 500);
         }
         return response()->json(['status'=>true]);
 
@@ -105,11 +102,6 @@ class AuthController extends Controller
         $token = $session->id;
         $expira = $session->expira;
         return response()->json(compact('token', 'expira', 'usuario'), 201);
-    }
-
-    private function genToken()
-    {
-        return bin2hex(random_bytes(32));
     }
 
     private function checkPermission($session, $permission)
