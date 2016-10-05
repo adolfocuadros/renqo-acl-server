@@ -19,7 +19,7 @@ return  [
             'driver'   => 'mongodb',
             'host'     => 'localhost',
             'port'     => '27017',
-            'database' => 'test',
+            'database' => 'renqo_acl',
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
             'use_mongo_id' => false,
