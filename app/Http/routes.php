@@ -22,6 +22,10 @@ $app->get('usuarios', [
     'uses' => 'UsuarioController@index'
 ]);
 
+$app->post('usuarios/search-user', [
+    'uses' => 'UsuarioController@searchUser'
+]);
+
 # Genera la lista de usuarios del sistema
 # POST /auth/usuarios
 $app->post('usuarios', [

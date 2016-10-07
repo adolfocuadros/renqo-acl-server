@@ -10,6 +10,12 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        if($request->has('email') && $request->has('password')) {
+            $request->merge([
+                'usuario'=>$request->get('email'),
+                'pass'=>$request->get('password')
+            ]);
+        }
         $this->validate($request, [
             'usuario'   =>  'required|string|exists:usuarios,usuario',
             'pass'      =>  'required|string'

@@ -32,4 +32,26 @@ class UsuarioController extends Controller
 
         return response()->json($usuario);
     }
+    
+    public function searchUser(Request $request) {
+
+        if($request->has('email')) {
+            $request->merge([
+                'usuario' => $request->get('email')
+            ]);
+        }
+
+        $this->validate($request, [
+            'usuario'   => 'required|string'
+        ]);
+
+        $usuario = \App\Usuario::where('usuario','=',$request->get('usuario'))->first();
+        if(count($usuario) == 0) {
+            abort(404, 'No existe usuario');
+        }
+
+        //$usuario->setAttribute('password', $usuario->pass);
+
+        return response()->json($usuario);
+    }
 }

@@ -20,8 +20,8 @@ return  [
             'host'     => 'localhost',
             'port'     => '27017',
             'database' => 'renqo_acl',
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
+            'username' => '',
+            'password' => '',
             'use_mongo_id' => false,
             'options' => [
                 'db' => 'admin', // Sets the authentication database required by mongo 3
