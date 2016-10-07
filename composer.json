@@ -11,7 +11,7 @@
         "moloquent/moloquent": "^0.1.0",
         "guzzlehttp/guzzle": "~6.0",
         "adolfocuadros/helpers": "dev-master",
-        "adolfocuadros/renqo-client-acl": "^0.6.0"
+        "adolfocuadros/renqo-client-acl": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

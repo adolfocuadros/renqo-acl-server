@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "85b5f8a3c6971e58945dc40b61b72f11",
-    "content-hash": "84746f1affee8c8fb793611baca76e61",
+    "hash": "cc9c93796266cb26ec691a8603f874bb",
+    "content-hash": "823d5b40a4000e46011f4d2e487958f9",
     "packages": [
         {
             "name": "adolfocuadros/helpers",
@@ -42,19 +42,20 @@
         },
         {
             "name": "adolfocuadros/renqo-client-acl",
-            "version": "v0.6.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adolfocuadros/renqo-client-acl.git",
-                "reference": "777e1c6ef85bb489980b0c4879c43d44c05caa7c"
+                "reference": "51859ce0deef77499fb3c8f5e664815faecdff22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adolfocuadros/renqo-client-acl/zipball/777e1c6ef85bb489980b0c4879c43d44c05caa7c",
-                "reference": "777e1c6ef85bb489980b0c4879c43d44c05caa7c",
+                "url": "https://api.github.com/repos/adolfocuadros/renqo-client-acl/zipball/51859ce0deef77499fb3c8f5e664815faecdff22",
+                "reference": "51859ce0deef77499fb3c8f5e664815faecdff22",
                 "shasum": ""
             },
             "require": {
+                "adolfocuadros/renqo-microservice": "dev-master",
                 "guzzlehttp/guzzle": "~6.0@dev"
             },
             "type": "package",
@@ -74,7 +75,43 @@
                 }
             ],
             "description": "Contiene las herramientas necesarias para conectarse a un servidor ACL RENQO",
-            "time": "2016-10-05 16:12:45"
+            "time": "2016-10-07 15:08:04"
+        },
+        {
+            "name": "adolfocuadros/renqo-microservice",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adolfocuadros/renqo-microservice.git",
+                "reference": "966c27d54a621113db5eaae06fa958323b4c2f14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adolfocuadros/renqo-microservice/zipball/966c27d54a621113db5eaae06fa958323b4c2f14",
+                "reference": "966c27d54a621113db5eaae06fa958323b4c2f14",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Adolfocuadros\\RenqoMicroservice\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adolfo Cuadros",
+                    "email": "ronnie.adolfo@gmail.com"
+                }
+            ],
+            "description": "RENQO Microservice - Herramienta para puesta en marcha de un microservicio",
+            "time": "2016-10-07 05:59:29"
         },
         {
             "name": "doctrine/inflector",
@@ -3224,16 +3261,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.6.0",
+            "version": "5.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a7f2db56518e50ab92f28f739810dfad2f223b6b"
+                "reference": "60c32c5b5e79c2248001efa2560f831da11cc2d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a7f2db56518e50ab92f28f739810dfad2f223b6b",
-                "reference": "a7f2db56518e50ab92f28f739810dfad2f223b6b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/60c32c5b5e79c2248001efa2560f831da11cc2d7",
+                "reference": "60c32c5b5e79c2248001efa2560f831da11cc2d7",
                 "shasum": ""
             },
             "require": {
@@ -3302,7 +3339,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-10-06 15:20:39"
+            "time": "2016-10-07 13:03:26"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3979,7 +4016,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "adolfocuadros/helpers": 20
+        "adolfocuadros/helpers": 20,
+        "adolfocuadros/renqo-client-acl": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
