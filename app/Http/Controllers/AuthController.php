@@ -16,6 +16,7 @@ class AuthController extends Controller
                 'pass'=>$request->get('password')
             ]);
         }
+        
         $this->validate($request, [
             'usuario'   =>  'required|string|exists:usuarios,usuario',
             'pass'      =>  'required|string'
@@ -24,6 +25,7 @@ class AuthController extends Controller
         ]);
 
         $usuario = \App\Usuario::usuario($request->get('usuario'));
+        $usuario->makeVisible('permisos');
 
         if(!Hash::check($request->get('pass'), $usuario->pass)) {
             return response()->json(['pass' => ['La contraseña no es válida']], 422);

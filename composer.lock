@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/adolfocuadros/renqo-client-acl.git",
-                "reference": "51859ce0deef77499fb3c8f5e664815faecdff22"
+                "reference": "158d6e4340969be985bbafe5cbb284d0b306075d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adolfocuadros/renqo-client-acl/zipball/51859ce0deef77499fb3c8f5e664815faecdff22",
-                "reference": "51859ce0deef77499fb3c8f5e664815faecdff22",
+                "url": "https://api.github.com/repos/adolfocuadros/renqo-client-acl/zipball/158d6e4340969be985bbafe5cbb284d0b306075d",
+                "reference": "158d6e4340969be985bbafe5cbb284d0b306075d",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
                 }
             ],
             "description": "Contiene las herramientas necesarias para conectarse a un servidor ACL RENQO",
-            "time": "2016-10-07 15:08:04"
+            "time": "2016-10-07 17:58:53"
         },
         {
             "name": "adolfocuadros/renqo-microservice",
@@ -83,12 +83,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/adolfocuadros/renqo-microservice.git",
-                "reference": "966c27d54a621113db5eaae06fa958323b4c2f14"
+                "reference": "6c8a1257dff29527a9935869714e77f68bc68873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adolfocuadros/renqo-microservice/zipball/966c27d54a621113db5eaae06fa958323b4c2f14",
-                "reference": "966c27d54a621113db5eaae06fa958323b4c2f14",
+                "url": "https://api.github.com/repos/adolfocuadros/renqo-microservice/zipball/6c8a1257dff29527a9935869714e77f68bc68873",
+                "reference": "6c8a1257dff29527a9935869714e77f68bc68873",
                 "shasum": ""
             },
             "require": {
@@ -111,7 +111,7 @@
                 }
             ],
             "description": "RENQO Microservice - Herramienta para puesta en marcha de un microservicio",
-            "time": "2016-10-07 05:59:29"
+            "time": "2016-10-07 17:58:02"
         },
         {
             "name": "doctrine/inflector",
