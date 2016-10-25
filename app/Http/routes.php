@@ -45,5 +45,5 @@ $app->post('logout', 'AuthController@logout');
 # POST /auth/session
 $app->post('acl', 'AuthController@checkAcl');
 
-
-$app->get('mongo', 'ExampleController@testMongo');
+# De acuerdo a la session indica el nombre e id
+$app->get('user-data', 'AuthController@userData');

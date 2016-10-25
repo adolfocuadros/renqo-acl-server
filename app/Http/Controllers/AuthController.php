@@ -93,6 +93,26 @@ class AuthController extends Controller
 
     }
 
+    public function userData(Request $request) {
+        if (!$request->hasHeader('Auth-Token')) {
+            return response()->json(['error' => 'No Está autorizado'], 401);
+        }
+
+        $token = $request->header('Auth-Token');
+
+        //Buscando la session en la DB
+        $session = \App\Sesion::find($token);
+
+        if (count($session) == 0) {
+            return response()->json(['error' => 'No Está autorizado'], 401);
+        }
+
+        $_id = $session->usuario->_id;
+        $name = $session->usuario->nombre;
+
+        return response()->json(compact('_id', 'name'));
+    }
+
     private function newSession($request, $usuario)
     {
         try {
