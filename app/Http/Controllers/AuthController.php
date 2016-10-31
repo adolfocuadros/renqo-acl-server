@@ -144,10 +144,16 @@ class AuthController extends Controller
         $niveles = count($app_permisos);
 
         foreach ($usuario_permisos as $permiso) {
-            for($i = 0; $i < $niveles; $i++) {
-                if($permiso == $app_permisos[$i].'.*' || $permiso == $app_permisos[$i]) {
+            $per = '';
+            for ($i = 0; $i < $niveles; $i++) {
+                if ($i != 0) {
+                    $per .= '.';
+                }
+                $per .= $app_permisos[$i];
+                if ($permiso == $per . '.*' || $permiso == $per) {
                     return true;
                 }
+
             }
         }
 
