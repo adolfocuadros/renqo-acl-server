@@ -132,31 +132,10 @@ class AuthController extends Controller
         return response()->json(compact('token', 'expira', 'usuario'), 201);
     }
 
-    private function checkPermission($session, $permission)
+    private function checkPermission($session, $systemPermission)
     {
-        $usuario_permisos = $session->usuario->permisos;
+        $userPermissions = $session->usuario->permisos;
 
-        if(!is_array($usuario_permisos) && $usuario_permisos == '*') {
-            return true;
-        }
-
-        $app_permisos = explode('.',$permission);
-        $niveles = count($app_permisos);
-
-        foreach ($usuario_permisos as $permiso) {
-            $per = '';
-            for ($i = 0; $i < $niveles; $i++) {
-                if ($i != 0) {
-                    $per .= '.';
-                }
-                $per .= $app_permisos[$i];
-                if ($permiso == $per . '.*' || $permiso == $per) {
-                    return true;
-                }
-
-            }
-        }
-
-        return false;
+        return permission($userPermissions, $systemPermission);
     }
 }
